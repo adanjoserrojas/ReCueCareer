@@ -162,7 +162,9 @@
     opacity: 1;
     transform: scale(1);
   }
-} .transEffectText1 {
+} 
+
+.transEffectText1 {
 
   animation:    appear;
   animation-timeline: view();

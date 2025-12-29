@@ -3,14 +3,15 @@ import json
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
-from selenium import webdriver
+from sentence_transformers import SentenceTransformer, util
+'''from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.options import Options'''
 
 KEYHEADERS = [
-    "Basic Qualifications", "Required Qualifications",
-    "Requirements", "Responsibilities", "Duties",
-    "Prerequisites", "What you’ll do", "What we’re looking for", "Position Consideration Requirements", "Required Skills", "Skills", "Skill Set"
+    "Basic Qualifications", "Required Qualifications", "Requirements", 
+    "Prerequisites", "What we’re looking for", "Position Consideration Requirements", 
+    "Required Skills", "Skills", "Skill Set", "Qualifications"
 ]
 HEADER_TAGS = ("h2","h3","strong","b")  # tags that might label sections
 RE_STEMS = re.compile(r"(qualif|requir|responsib|duti|posit)", re.I) # 2) regex stem matcher
@@ -52,7 +53,7 @@ def extract(url: str = None):
 
 # Semantic Similarity
 try:
-    from sentence_transformers import SentenceTransformer, util
+    
     _model = SentenceTransformer('all-MiniLM-L6-v2')
     _anchor = _model.encode(
         "job requirements qualifications responsibilities duties skills",
