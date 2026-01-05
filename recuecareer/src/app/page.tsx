@@ -165,7 +165,7 @@ export default function Home() {
             <AlertDialogHeader>
               <AlertDialogTitle>You are just one step away from succeding</AlertDialogTitle>
               <AlertDialogDescription>
-                Sign Up today... You won't regret this action.
+                Sign Up today... You won&apos;t regret this action.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>

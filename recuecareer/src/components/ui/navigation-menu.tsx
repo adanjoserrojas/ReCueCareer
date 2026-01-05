@@ -128,6 +128,7 @@ function NavigationMenuLink({
   return (
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
+      className={className}
       {...props}
     />
   )
