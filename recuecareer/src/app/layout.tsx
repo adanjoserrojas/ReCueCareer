@@ -1,5 +1,6 @@
 import './globals.css'
 import { AuroraBackground } from '@/components/ui/aurora-background'
+import {Auth0Provider as UserProvider} from '@auth0/nextjs-auth0/client'
 
 export const metadata = {
   title: 'Create Next App',
@@ -20,9 +21,11 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <AuroraBackground>
-          {children}
-        </AuroraBackground>
+        <UserProvider>
+          <AuroraBackground>
+            {children}
+          </AuroraBackground>
+        </UserProvider>
       </body>
     </html>
   )

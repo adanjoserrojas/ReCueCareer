@@ -1,41 +1,34 @@
-import { auth0 } from "@/lib/auth0"
+import { auth0 } from "@/lib/auth0";
+import LoginButton from "@/components/ui/LoginButton";
+import LogoutButton from "@/components/ui/LogoutButton";
+import Profile from "@/components/ui/Profile";
 
 export default async function Home() {
-  const session = await auth0.getSession()
-  
-
-  if (!session) {
-    return (
-    <header className="fixed top-30 items-center justify-center text-Secondary">
-
-        <div className="text-5xl md:text-7xl max-w-2xl tracking-tighter text-center font-inter font-semibold p-10">
-            ReCueCareer
-        </div>
-
-        <p className="italic text-lg md:text-xl leading-relaxed tracking-tight text-white max-w-2xl text-center">
-            Today you will make a decision that will change the trajectory of your career. Make it count...
-        </p>
-
-        <div className="flex flex-row font-semibold items-center justify-center gap-5 m-7">
-            <a className="bg-BackgroundNavyBlue z-50 py-5 px-8 text-LightCutsieGrayMiau custom-blur-border text-4xl hover:bg-Primary rounded-3xl transition-color duration-300" href="/auth/login?screen_hint=signup">
-                Sign up   
-            </a>
-            <a className="bg-BackgroundNavyBlue z-50 py-5 px-8 text-LightCutsieGrayMiau custom-blur-border text-4xl hover:bg-Primary rounded-3xl transition-color duration-300" href="/auth/login">
-                Sign in
-            </a>
-        </div> 
-
-    </header>
-    );
-  }
+  const session = await auth0.getSession();
+  const user = session?.user;
 
   return (
-    <h1>
-        <div className="flex flex-row font-semibold items-center justify-center gap-5 m-7">
-            <a className="bg-BackgroundNavyBlue z-50 py-5 px-8 text-LightCutsieGrayMiau custom-blur-border text-4xl hover:bg-Primary rounded-3xl transition-color duration-300" href="/auth/logout">
-                Log Out  
-            </a>
+    <div className="relative z-10 min-h-screen flex items-center justify-center">
+      <div className="text-center space-y-8 p-8">
+        <h1 className="text-4xl font-bold text-white">Next.js + Auth0</h1>
+        
+        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 space-y-6">
+          {user ? (
+            <div className="space-y-4">
+              <p className="text-green-400 text-xl">✅ Successfully logged in!</p>
+              <Profile />
+              <LogoutButton />
+            </div>
+          ) : (
+            <div className="space-y-6">
+              <p className="text-white/80 text-lg">
+                Welcome! Please log in to access your protected content.
+              </p>
+              <LoginButton />
+            </div>
+          )}
         </div>
-    </h1>
-  )
+      </div>
+    </div>
+  );
 }
