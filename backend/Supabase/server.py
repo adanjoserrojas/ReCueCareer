@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, AnyHttpUrl
 
 from sentence_transformers import SentenceTransformer, util
-from mainAPI import transformer, extract
+from .mainAPI import transformer, extract
 
 from typing import Literal
 

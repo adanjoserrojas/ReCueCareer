@@ -1,5 +1,5 @@
-// app/api/requirements/route.ts
 import { NextRequest, NextResponse } from "next/server";
+import { auth0 } from "@/lib/auth0";
 
 type ExtractOut = {
   techRequirements: string[];
@@ -7,9 +7,14 @@ type ExtractOut = {
   error?: string;
 };
 
-export const runtime = "nodejs"; // ensure Node runtime if your project defaults to edge
+export const runtime = "nodejs";
 
 export async function POST(req: NextRequest) {
+  const session = await auth0.getSession();
+  if (!session) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   const { url } = (await req.json()) as { url?: string };
   if (!url || typeof url !== "string") {
     return NextResponse.json({ error: "Missing or invalid 'url'." }, { status: 400 });

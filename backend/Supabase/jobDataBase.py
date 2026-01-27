@@ -1,7 +1,11 @@
 import os
 import json
-from mainAPI import extract, transformer, extract, extract_linkedin, _find_by_semantic, _grab_list_after
+from .mainAPI import ( extract, transformer, extract, extract_linkedin, _find_by_semantic, _grab_list_after )
 #from supabase import create_client, Client
+from .server import stripRequirements, semanticHelper
+from typing import Any
+
+
 
 if __name__ == "__main__":
 
