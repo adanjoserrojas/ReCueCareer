@@ -20,6 +20,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+import DashboardNavBar from "@/components/ui/dashboard-nav-bar";
 
 type ExtractOut = {
   techRequirements: string[];
@@ -103,43 +104,11 @@ export default function RequirementsPage() {
   const hasResults = tech.length > 0 || gen.length > 0;
 
   return (
-    <div className="relative z-10 flex min-h-screen">
-      {/* Sidebar */}
-      <motion.aside 
-        initial={{ x: -64 }}
-        animate={{ x: 0 }}
-        className="fixed left-0 top-0 h-full w-16 bg-Primary/10 backdrop-blur-md border-r border-white/5 flex flex-col items-center py-8 gap-8 z-50"
-      >
-        <motion.div 
-          whileHover={{ scale: 1.1 }}
-          className="w-8 h-8 rounded-lg bg-PowerfulYellow flex items-center justify-center"
-        >
-          <Briefcase className="w-4 h-4 text-Primary/40" />
-        </motion.div>
-        
-        <nav className="flex flex-col gap-4 mt-8">
-          {navItems.map((item, i) => (
-            <motion.button
-              key={item.label}
-              initial={{ opacity: 0, x: -16 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: i * 0.1 }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${
-                item.active 
-                  ? "bg-PowerfulYellow/20 text-PowerfulYellow" 
-                  : "text-white/40 hover:text-white/80 hover:bg-white/5"
-              }`}
-            >
-              <item.icon className="w-5 h-5" />
-            </motion.button>
-          ))}
-        </nav>
-      </motion.aside>
+    <div className="relative z-10 min-h-screen">
+      <DashboardNavBar />
 
       {/* Main Content */}
-      <main className="flex-1 ml-16 p-8">
+      <main className="relative pt-20 lg:pt-24 px-4 sm:px-6 lg:px-8 pb-8">
         <div className="max-w-5xl mx-auto">
           {/* Header */}
           <motion.header 
