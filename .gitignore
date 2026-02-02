@@ -1,0 +1,23 @@
+# Global gitignore file to protect backend credentials
+
+
+# Credentials - never commit sensitive files
+**/credentials.json
+**/token.json
+
+# Environment files
+.env
+.env.local
+.env*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+.venv/
+
+# IDE
+.vscode/
+.idea/

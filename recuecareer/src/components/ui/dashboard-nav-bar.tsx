@@ -39,7 +39,7 @@ export default function DashboardNavBar() {
                                 alt="ReCueCareer Logo"
                                 className=""
                             />
-                            <span className="hidden sm:block text-xl font-bold text-Primary">
+                            <span className="hidden sm:block text-xl font-bold text-Secondary">
                                 ReCueCareer
                             </span>
                         </Link>
