@@ -15,6 +15,7 @@ import { Menu, MoveRight, X } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 export const Header1 = () => {
 const navigationItems = [
@@ -49,6 +50,7 @@ const navigationItems = [
 ];
 
 const [isOpen, setOpen] = useState(false);
+const { user } = useUser();
 
 // Animation variants
 const menuVariants = {
@@ -162,6 +164,11 @@ return (
         />
         </div>
         <div className="flex justify-end w-full gap-4">
+        {user && (
+          <Link href="/dashboard" passHref>
+            <Button variant="outline">Dashboard</Button>
+          </Link>
+        )}
         <Link href="/getStarted" passHref><Button variant="outline">Get Started</Button></Link>
         </div>
         <div className="flex w-12 shrink lg:hidden items-end justify-end">
