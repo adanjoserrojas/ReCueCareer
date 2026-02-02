@@ -7,9 +7,12 @@ export default async function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/myExperience",
-    "/auth/login",
-    "/auth/callback",
-    "/auth/logout",
+    "/auth/:path*", 
+    "/((?!_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)", 
+    "/dashboard/:path*",
+    "/jobRequirementExtractor/:path*",
+    "/autoApply/:path*",
+    "/settings/:path*"
   ],
 };
+
