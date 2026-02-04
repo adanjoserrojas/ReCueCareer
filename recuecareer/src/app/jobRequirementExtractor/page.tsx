@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { auth0 } from "@/lib/auth0";
-import MyExperienceClient from "./components/myExperienceUI";
+import MyExperienceClient from "./components/myExperience-client";
 
 export default async function MyExperiencePage() {
   const session = await auth0.getSession();
